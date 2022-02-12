@@ -1,0 +1,21 @@
+.color-picker
+	top: 0px
+	float: left
+	width: 40px
+
+	div
+		margin-left: 4px
+		margin-right: 4px
+		width: 32px
+		height: 24px
+		background-color: attr(data-color)
+		cursor: pointer
+		z-index: 1
+
+	div.selected
+		box-shadow: 0 0 0 5px white, 0 0 6px 7px black
+		z-index: 2
+		position: relative
+		// border: 4px solid white
+		// outline: 1px solid darkgray
+

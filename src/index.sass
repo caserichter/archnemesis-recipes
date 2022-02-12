@@ -1,0 +1,27 @@
+@import 'bootstrap/scss/bootstrap'
+
+
+.tier
+	@extend .row, .justify-content-center, .row-cols-auto, .g-1, .py-3,
+
+.node
+	@extend .col, .card, .p-1, .m-1
+	margin: 4px
+	cursor: pointer
+	background-color: #EEE
+	font-style: small-caps
+	// -webkit-text-stroke: 1px white
+	// -webkit-text-fill-color: black
+	text-shadow: -1px 1px 12px white, 1px -1px 12px white, 1px 1px 12px white, -1px -1px 12px white,
+
+.description img
+		// width: 16px
+		height: 1.4rem
+		display: inline
+
+.effect
+	@extend .p-1
+	display: inline
+	font-size: .8rem
+	font-style: italic
+	
