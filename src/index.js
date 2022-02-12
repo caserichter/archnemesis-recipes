@@ -1,4 +1,4 @@
-import * as d3 from 'd3-selection'
+// import * as d3 from 'd3-selection'
 import {Node, get_nodes} from './data'
 import './index.sass'
 import {ColorPicker} from './color-picker'
