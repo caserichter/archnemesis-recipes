@@ -102,7 +102,7 @@ hexer chaosweaver echoist
 drought_bringer malediction deadeye
 temporal_bubble juggernaut hexer arcane_buffer
 frost_strider frostweaver hasted
-ice_prison frostweaver hasted
+ice_prison permafrost sentinel 
 soul_eater soul_conduit necromancer gargantuan
 flame_strider flameweaver hasted
 corpse_detonator necromancer incendiary
