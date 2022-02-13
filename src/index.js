@@ -35,7 +35,7 @@ class State {
 	}
 
 	save() {
-		let new_url = window.location.protocol + '//' + window.location.host + window.location.pathname + '?state=' + encodeURIComponent(JSON.stringify(this.args))
+		let new_url = window.location.protocol + '//' + window.location.host + window.location.pathname + '?state=' + JSON.stringify(this.args)
 		window.history.pushState({path:new_url}, '', new_url)
 		// window.location.search = this.args.toString()
 	}
@@ -52,6 +52,7 @@ class App {
 		this.state = new State()
 
 		this.color_picker = new ColorPicker(document.querySelector('color-picker'))
+		this.color_picker.color = 
 
 		this.nodes = get_nodes()
 		this.nodes_by_tier = []

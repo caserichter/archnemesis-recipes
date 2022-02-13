@@ -20,7 +20,7 @@ let colors = [
 
 
 export class ColorPicker {
-	color = null
+	color = colors[8]
 	color_divs = []
 	onselect_listener = null
 
@@ -36,6 +36,9 @@ export class ColorPicker {
 				element.querySelectorAll('div').forEach(div => div.classList.remove('selected'))
 				div.classList.add('selected')
 				if(this.onselect_listener) this.onselect_listener(this.color)
+			}
+			if(this.color == color) {
+				div.classList.add('selected')
 			}
 			element.appendChild(div)
 		})
