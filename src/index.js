@@ -15,7 +15,9 @@ class State {
 		select: {},
 	}
 	constructor() {
-		let state = JSON.parse(new URLSearchParams(window.location.search).get('state'))
+		let state_string = new URLSearchParams(window.location.search).get('state')
+		p(state_string)
+		let state = JSON.parse(decodeURIComponent(state_string)||'{}')
 		for(let key in state) {
 			this.args[key] = state[key]
 		}
@@ -35,7 +37,7 @@ class State {
 	}
 
 	save() {
-		let new_url = window.location.protocol + '//' + window.location.host + window.location.pathname + '?state=' + JSON.stringify(this.args)
+		let new_url = window.location.protocol + '//' + window.location.host + window.location.pathname + '?state=' + encodeURIComponent(JSON.stringify(this.args))
 		window.history.pushState({path:new_url}, '', new_url)
 		// window.location.search = this.args.toString()
 	}
@@ -52,7 +54,6 @@ class App {
 		this.state = new State()
 
 		this.color_picker = new ColorPicker(document.querySelector('color-picker'))
-		this.color_picker.color = 
 
 		this.nodes = get_nodes()
 		this.nodes_by_tier = []
@@ -65,6 +66,7 @@ class App {
 	}
 
 	update() {
+		p('hello', this.color_picker.color)
 
 		// clear select state of all nodes
 		this.nodes.forEach(node => {
@@ -77,7 +79,8 @@ class App {
 		if(select) {
 			for(let name in select) {
 				let color = select[name]
-				if(!color) continue
+				if(!color) 
+					continue
 				this.nodes
 					.filter(node => node.name == name)
 					.forEach(node => this.select(node, color))
@@ -99,10 +102,12 @@ class App {
 					.call(create_node)
 					.style('background-color', node => node.select)
 					.on('click', (_, node) => {
+						p('click', this.color_picker.color)
 						if(this.state.get('select')[node.name]) {
 							delete this.state.get('select')[node.name]
 						} else {
-							this.state.get('select')[node.name] = this.color_picker.color
+							if(this.color_picker.color) 
+								this.state.get('select')[node.name] = this.color_picker.color
 						}
 						this.state.save()
 						this.update()
